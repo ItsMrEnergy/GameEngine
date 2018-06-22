@@ -94,11 +94,11 @@ public class MapBuilderState extends State{
 		return -1;
 	}
 
-	@Override
-	public void render(Graphics g) {
-		map.render(g);
-		
-		t.render(g);
-	}
+//	@Override
+//	public void render(Graphics g) {
+//		map.render(g);
+//		
+//		t.render(g);
+//	}
 
 }

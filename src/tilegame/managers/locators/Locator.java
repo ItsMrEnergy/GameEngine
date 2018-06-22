@@ -32,9 +32,9 @@ public abstract class Locator {
 	
 	public abstract void update();
 	
-	public abstract void render(Graphics g);
+//	public abstract void render(Graphics g);
 	
-	public abstract void render(Graphics g, double scale);
+//	public abstract void render(Graphics g, double scale);
 	
 	public abstract BufferedImage getTexture();
 	/**

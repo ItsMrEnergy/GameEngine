@@ -35,11 +35,11 @@ public class MenuState extends State{
 			System.exit(1);
 	}
 
-	@Override
-	public void render(Graphics g) {
-		startButton.render(g);
-		mapBuilderButton.render(g);
-		exitButton.render(g);
-	}
+//	@Override
+//	public void render(Graphics g) {
+//		startButton.render(g);
+//		mapBuilderButton.render(g);
+//		exitButton.render(g);
+//	}
 
 }

@@ -25,7 +25,7 @@ public abstract class UIObject {
 	}
 
 	public abstract void update();
-	public abstract void render(Graphics g);
+//	public abstract void render(Graphics g);
 	
 	//Getters and Setters
 	public float getX() {

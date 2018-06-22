@@ -113,10 +113,10 @@ public class MapBuilderMenuState extends State {
 		return null;
 }
 
-	@Override
-	public void render(Graphics g) {
-		loadButton.render(g);
-		newButton.render(g);
-		backButton.render(g);
-	}
+//	@Override
+//	public void render(Graphics g) {
+//		loadButton.render(g);
+//		newButton.render(g);
+//		backButton.render(g);
+//	}
 }

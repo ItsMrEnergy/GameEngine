@@ -133,51 +133,51 @@ public class Creature extends Entity{
 	/**
 	 * This method is responsible for rendering the newly updated creature.
 	 */
-	@Override
-	public void render(Graphics g) {
-		g.drawImage(getCurentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null); //render player
-		
-		//DEBUGMODE
-		/*-------------------------------------------*/
-		if(DEBUGMODE){
-			g.setColor(Color.WHITE);
-			DEBUGMODE_render(g);
-			//player specific DEBUGMODE
-			if (creature == CreatureType.Player) {
-				g.setColor(Color.WHITE);
-				String c = "X: " + (int)(xlocation / Tile.TILEWIDTH) + " Y: " + (int)(ylocation / Tile.TILEHEIGHT) + "   Actual: X: " + xlocation + " Y: " + ylocation;
-				g.drawString(c, 5, 12);
-				String mc = "X: " + xmouse + " Y: " + ymouse;
-				g.drawString(mc, 5, 24);
-				String entities = "Entities: " + (handler.getWorld().getEntityManager().getEntities().size() - 1);
-				g.drawString(entities, 5, 36);
-				String hp = "Health: " + health;
-				g.drawString(hp, 5, 48);
-			}
-		}
-		/*-------------------------------------------*/
-	}
-	public void render(Graphics g, double scale) {
-		int x = (int) (this.x*scale - handler.getGameCamera().getxOffset());
-		int y = (int) (this.y*scale - handler.getGameCamera().getyOffset());
-		int width = (int)(this.width*scale);
-		int height = (int)(this.height*scale);
-		
-		g.drawImage(getCurentAnimationFrame(), x, y, width, height, null);
-		if(DEBUGMODE){
-			//Player collision box
-			g.setColor(Color.WHITE);
-			g.drawRect((int) (this.x*scale + bounds.x*scale -handler.getGameCamera().getxOffset()), (int) (this.y*scale + bounds.y*scale -handler.getGameCamera().getyOffset()), (int)(bounds.width*scale), (int)(bounds.height*scale));
-			g.drawRect(x, y, width, height);
-		}
-	}
-	/**
-	 * This method is used to render the creature's inventory on top of everything else.
-	 * @param g
-	 */
-	public void postRender(Graphics g) {
-		inventory.render(g);
-	}
+//	@Override
+//	public void render(Graphics g) {
+//		g.drawImage(getCurentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null); //render player
+//		
+//		//DEBUGMODE
+//		/*-------------------------------------------*/
+//		if(DEBUGMODE){
+//			g.setColor(Color.WHITE);
+//			DEBUGMODE_render(g);
+//			//player specific DEBUGMODE
+//			if (creature == CreatureType.Player) {
+//				g.setColor(Color.WHITE);
+//				String c = "X: " + (int)(xlocation / Tile.TILEWIDTH) + " Y: " + (int)(ylocation / Tile.TILEHEIGHT) + "   Actual: X: " + xlocation + " Y: " + ylocation;
+//				g.drawString(c, 5, 12);
+//				String mc = "X: " + xmouse + " Y: " + ymouse;
+//				g.drawString(mc, 5, 24);
+//				String entities = "Entities: " + (handler.getWorld().getEntityManager().getEntities().size() - 1);
+//				g.drawString(entities, 5, 36);
+//				String hp = "Health: " + health;
+//				g.drawString(hp, 5, 48);
+//			}
+//		}
+//		/*-------------------------------------------*/
+//	}
+//	public void render(Graphics g, double scale) {
+//		int x = (int) (this.x*scale - handler.getGameCamera().getxOffset());
+//		int y = (int) (this.y*scale - handler.getGameCamera().getyOffset());
+//		int width = (int)(this.width*scale);
+//		int height = (int)(this.height*scale);
+//		
+//		g.drawImage(getCurentAnimationFrame(), x, y, width, height, null);
+//		if(DEBUGMODE){
+//			//Player collision box
+//			g.setColor(Color.WHITE);
+//			g.drawRect((int) (this.x*scale + bounds.x*scale -handler.getGameCamera().getxOffset()), (int) (this.y*scale + bounds.y*scale -handler.getGameCamera().getyOffset()), (int)(bounds.width*scale), (int)(bounds.height*scale));
+//			g.drawRect(x, y, width, height);
+//		}
+//	}
+//	/**
+//	 * This method is used to render the creature's inventory on top of everything else.
+//	 * @param g
+//	 */
+//	public void postRender(Graphics g) {
+//		inventory.render(g);
+//	}
 	//Getters and Setters
 	/**
 	 * This method gets the current animation image which allows for a animated creature character.
@@ -438,61 +438,61 @@ public class Creature extends Entity{
 	 * This method is responsible for rendering DEBUGMODE related rendering
 	 * @param g
 	 */
-	public void DEBUGMODE_render(Graphics g) {
-		//Draw path
-		if (path != null) {
-			if (path.size() > 0) {
-				for (int i = 0; i<path.size()-1; i++) {
-					g.drawLine((int) (path.get(i).tile.getX()*Tile.TILEWIDTH + Tile.TILEWIDTH/2 - handler.getGameCamera().getxOffset()),
-							  (int) (path.get(i).tile.getY()*Tile.TILEHEIGHT + Tile.TILEHEIGHT/2 - handler.getGameCamera().getyOffset()),
-							 (int) (path.get(i+1).tile.getX()*Tile.TILEWIDTH + Tile.TILEWIDTH/2 - handler.getGameCamera().getxOffset()),
-							(int) (path.get(i+1).tile.getY()*Tile.TILEHEIGHT + Tile.TILEHEIGHT/2 - handler.getGameCamera().getyOffset()));
-				}
-				g.drawLine((int) (path.get(path.size()-1).tile.getX()*Tile.TILEWIDTH + Tile.TILEWIDTH/2 - handler.getGameCamera().getxOffset()),
-						(int) (path.get(path.size()-1).tile.getY()*Tile.TILEWIDTH + Tile.TILEWIDTH/2 - handler.getGameCamera().getyOffset()),
-						(int) (xlocation - handler.getGameCamera().getxOffset()), (int) (ylocation - handler.getGameCamera().getyOffset()));
-			}
-		}
-		//NPC collision box
-		g.setColor(Color.WHITE);
-		g.drawRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
-		
-		//Attack box
-		at += System.currentTimeMillis() - lat;
-		lat = System.currentTimeMillis();
-		if(at < attackCooldown)
-			return;
-		
-		Rectangle cb = getCollisionBounds(0, 0);// Collision Bounds of Player
-		Rectangle ar = new Rectangle(); // Attack Rectangle
-		int arSize = 23; //Size of Attack Rectangle
-		ar.width = arSize;
-		ar.height = arSize;
-		g.setColor(Color.GREEN);
-		if(attacking) {
-			if(lastDirection == 1) { //Attack Left
-				ar.x = cb.x - arSize;
-				ar.y = cb.y + cb.height / 2 - arSize / 2;
-			}else if(lastDirection == 3) { //Attack Right
-				ar.x = cb.x + cb.width;
-				ar.y = cb.y + cb.height / 2 - arSize / 2;
-			}else if(lastDirection == 0) { //Attack Up
-				ar.x = cb.x;
-				ar.y = cb.y - arSize;
-			}else if(lastDirection == 2) { //Attack Down
-				ar.x = cb.x + cb.width / 2 - arSize / 2;
-				ar.y = cb.y + cb.height;
-			} else return;
-			at = 0;
-			for(Entity e : handler.getWorld().getEntityManager().getEntities()) {
-				if (e.equals(this))
-					continue;
-				if(e.getCollisionBounds(0, 0).intersects(ar))
-					g.setColor(Color.RED);
-			}
-			g.fillRect((int) (ar.x - handler.getGameCamera().getxOffset()), (int) (ar.y - handler.getGameCamera().getyOffset()), arSize, arSize);
-		}
-	}
+//	public void DEBUGMODE_render(Graphics g) {
+//		//Draw path
+//		if (path != null) {
+//			if (path.size() > 0) {
+//				for (int i = 0; i<path.size()-1; i++) {
+//					g.drawLine((int) (path.get(i).tile.getX()*Tile.TILEWIDTH + Tile.TILEWIDTH/2 - handler.getGameCamera().getxOffset()),
+//							  (int) (path.get(i).tile.getY()*Tile.TILEHEIGHT + Tile.TILEHEIGHT/2 - handler.getGameCamera().getyOffset()),
+//							 (int) (path.get(i+1).tile.getX()*Tile.TILEWIDTH + Tile.TILEWIDTH/2 - handler.getGameCamera().getxOffset()),
+//							(int) (path.get(i+1).tile.getY()*Tile.TILEHEIGHT + Tile.TILEHEIGHT/2 - handler.getGameCamera().getyOffset()));
+//				}
+//				g.drawLine((int) (path.get(path.size()-1).tile.getX()*Tile.TILEWIDTH + Tile.TILEWIDTH/2 - handler.getGameCamera().getxOffset()),
+//						(int) (path.get(path.size()-1).tile.getY()*Tile.TILEWIDTH + Tile.TILEWIDTH/2 - handler.getGameCamera().getyOffset()),
+//						(int) (xlocation - handler.getGameCamera().getxOffset()), (int) (ylocation - handler.getGameCamera().getyOffset()));
+//			}
+//		}
+//		//NPC collision box
+//		g.setColor(Color.WHITE);
+//		g.drawRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
+//		
+//		//Attack box
+//		at += System.currentTimeMillis() - lat;
+//		lat = System.currentTimeMillis();
+//		if(at < attackCooldown)
+//			return;
+//		
+//		Rectangle cb = getCollisionBounds(0, 0);// Collision Bounds of Player
+//		Rectangle ar = new Rectangle(); // Attack Rectangle
+//		int arSize = 23; //Size of Attack Rectangle
+//		ar.width = arSize;
+//		ar.height = arSize;
+//		g.setColor(Color.GREEN);
+//		if(attacking) {
+//			if(lastDirection == 1) { //Attack Left
+//				ar.x = cb.x - arSize;
+//				ar.y = cb.y + cb.height / 2 - arSize / 2;
+//			}else if(lastDirection == 3) { //Attack Right
+//				ar.x = cb.x + cb.width;
+//				ar.y = cb.y + cb.height / 2 - arSize / 2;
+//			}else if(lastDirection == 0) { //Attack Up
+//				ar.x = cb.x;
+//				ar.y = cb.y - arSize;
+//			}else if(lastDirection == 2) { //Attack Down
+//				ar.x = cb.x + cb.width / 2 - arSize / 2;
+//				ar.y = cb.y + cb.height;
+//			} else return;
+//			at = 0;
+//			for(Entity e : handler.getWorld().getEntityManager().getEntities()) {
+//				if (e.equals(this))
+//					continue;
+//				if(e.getCollisionBounds(0, 0).intersects(ar))
+//					g.setColor(Color.RED);
+//			}
+//			g.fillRect((int) (ar.x - handler.getGameCamera().getxOffset()), (int) (ar.y - handler.getGameCamera().getyOffset()), arSize, arSize);
+//		}
+//	}
 	
 	
 	

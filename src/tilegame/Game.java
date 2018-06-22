@@ -82,24 +82,24 @@ public class Game implements Runnable{ //Must implement Runnable in order for it
 	/**
 	 * This method takes the updated locations and draws them to the screen.
 	 */
-	private void render(){//draws updated positions to the screen
-		bs = display.getCanvas().getBufferStrategy(); //Basically a screen before the actual screen.
-		if(bs == null){
-			display.getCanvas().createBufferStrategy(3); //Sets screen to have 3 screens premade before user sees it.
-			return;
-		}
-		g = bs.getDrawGraphics(); //Allows drawing to canvas
-		//Clear Screen
-		g.clearRect(0, 0, width, height);
-		//DRAW HERE!
-		
-		if(State.getState() != null)
-			State.getState().render(g);
-		
-		//END DRAWING!
-		bs.show(); //draws objects
-		g.dispose(); //completes graphics properly
-	}
+//	private void render(){//draws updated positions to the screen
+//		bs = display.getCanvas().getBufferStrategy(); //Basically a screen before the actual screen.
+//		if(bs == null){
+//			display.getCanvas().createBufferStrategy(3); //Sets screen to have 3 screens premade before user sees it.
+//			return;
+//		}
+//		g = bs.getDrawGraphics(); //Allows drawing to canvas
+//		//Clear Screen
+//		g.clearRect(0, 0, width, height);
+//		//DRAW HERE!
+//		
+//		if(State.getState() != null)
+//			State.getState().render(g);
+//		
+//		//END DRAWING!
+//		bs.show(); //draws objects
+//		g.dispose(); //completes graphics properly
+//	}
 	/**
 	 * This method runs the game and sets a base for how often it can update and render.
 	 */
@@ -123,7 +123,7 @@ public class Game implements Runnable{ //Must implement Runnable in order for it
 			lastTime = now; //Updates last time
 			if(delta >= 1){
 				update(); //updates positions of game objects and window etc.
-				render(); //renders updated positions
+//				render(); //renders updated positions
 				ticks++;
 				delta--;
 			}

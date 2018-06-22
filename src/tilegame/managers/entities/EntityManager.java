@@ -64,20 +64,20 @@ public class EntityManager {
 	 * This method renders the updated positions of the entities.
 	 * @param g
 	 */
-	public void render(Graphics g){
-		for(Entity e : entities){
-			e.render(g);
-		}
-		for(Creature e : creatures){
-			if (e.getCreature() == CreatureType.Player)
-				e.postRender(g);
-		}
-	}
-	public void render(Graphics g, double scale){
-		for(Entity e : entities){
-			e.render(g, scale);
-		}
-	}
+//	public void render(Graphics g){
+//		for(Entity e : entities){
+//			e.render(g);
+//		}
+//		for(Creature e : creatures){
+//			if (e.getCreature() == CreatureType.Player)
+//				e.postRender(g);
+//		}
+//	}
+//	public void render(Graphics g, double scale){
+//		for(Entity e : entities){
+//			e.render(g, scale);
+//		}
+//	}
 	/**
 	 * This method adds an entity to the entities ArrayList and the non-moving ArrayList to be stored.
 	 * @param e

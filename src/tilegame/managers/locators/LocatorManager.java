@@ -39,17 +39,17 @@ public class LocatorManager {
 	 * This method renders the updated positions of the locators.
 	 * @param g
 	 */
-	public void render(Graphics g){
-		for(Locator e : locators){
-			e.render(g);
-		}
-	}
+//	public void render(Graphics g){
+//		for(Locator e : locators){
+//			e.render(g);
+//		}
+//	}
 	
-	public void render(Graphics g, double scale){
-		for(Locator e : locators){
-			e.render(g, scale);
-		}
-	}
+//	public void render(Graphics g, double scale){
+//		for(Locator e : locators){
+//			e.render(g, scale);
+//		}
+//	}
 	
 	/**
 	 * This method adds a locators to the locators ArrayList to be stored.

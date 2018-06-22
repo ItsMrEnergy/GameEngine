@@ -68,11 +68,11 @@ public class Item {
 	 * Item is being rendered in the world the ground.
 	 * @param g
 	 */
-	public void render(Graphics g) {
-		if(handler == null)
-			return;
-		render(g, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()));
-	}
+//	public void render(Graphics g) {
+//		if(handler == null)
+//			return;
+//		render(g, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()));
+//	}
 	
 	/**
 	 * Item is being rendered in the player's inventory screen.

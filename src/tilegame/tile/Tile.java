@@ -57,16 +57,16 @@ public class Tile {
 	 * @param x
 	 * @param y
 	 */
-	public void render(Graphics g, int x, int y){
-		if (texture != null)
-			g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
-		if(DEBUGMODE) {
-			Color oldcolor = g.getColor();
-			g.setColor(new Color(0,0,0,127));
-			g.drawRect(x, y, TILEWIDTH, TILEHEIGHT);
-			g.setColor(oldcolor);
-		}
-	}
+//	public void render(Graphics g, int x, int y){
+//		if (texture != null)
+//			g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
+//		if(DEBUGMODE) {
+//			Color oldcolor = g.getColor();
+//			g.setColor(new Color(0,0,0,127));
+//			g.drawRect(x, y, TILEWIDTH, TILEHEIGHT);
+//			g.setColor(oldcolor);
+//		}
+//	}
 	
 	/**
 	 * This method is responsible for rendering updated tiles to the scale provided
@@ -74,15 +74,15 @@ public class Tile {
 	 * @param x
 	 * @param y
 	 */
-	public void render(Graphics g, int x, int y, double scale){
-		g.drawImage(texture, x, y, (int)(TILEWIDTH * scale), (int)(TILEHEIGHT * scale), null);
-		if(DEBUGMODE) {
-			Color oldcolor = g.getColor();
-			g.setColor(new Color(0,0,0,127));
-			g.drawRect(x, y, (int)(TILEWIDTH * scale), (int)(TILEHEIGHT * scale));
-			g.setColor(oldcolor);
-		}
-	}
+//	public void render(Graphics g, int x, int y, double scale){
+//		g.drawImage(texture, x, y, (int)(TILEWIDTH * scale), (int)(TILEHEIGHT * scale), null);
+//		if(DEBUGMODE) {
+//			Color oldcolor = g.getColor();
+//			g.setColor(new Color(0,0,0,127));
+//			g.drawRect(x, y, (int)(TILEWIDTH * scale), (int)(TILEHEIGHT * scale));
+//			g.setColor(oldcolor);
+//		}
+//	}
 	/**
 	 * This method decides whether the tile is solid.
 	 * It is by default set to false.
