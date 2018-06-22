@@ -63,36 +63,36 @@ public class Terminal{
 		display_list.add(0,s);
 	}
 
-	public void render(Graphics g) {
-		if(!isOpen) return;
-		
-		int alpha = (int) (255 * TRANSPARENCY / 100);
-		int LINE_SPACE = FONT_SIZE / 2;
-		
-		int width = WIDTH;
-		int height = (NUM_LINES + 1) * FONT_SIZE;
-		int x = X_BORDER;
-		int y = handler.getHeight() - Y_BORDER - height;
-		
-		Color c = new Color(0, 0, 0, alpha);
-		g.setColor(c);
-		g.fillRect(x, y, width, height);
-		c = new Color(0, 0, 0, alpha);
-		g.setColor(c);
-		g.fillRect(x, handler.getHeight() - Y_BORDER - FONT_SIZE - (LINE_SPACE / 2), width, FONT_SIZE + LINE_SPACE / 2);
-		
-		
-		
-		
-		c = new Color(255,255,255);
-		g.setColor(c);
-		g.setFont(new Font("Courier New", Font.BOLD, FONT_SIZE));
-		g.drawString(command_line, X_BORDER + LINE_SPACE, handler.getHeight() - Y_BORDER - LINE_SPACE);
-		
-		for (int i = 0;i < display_list.size() && i < NUM_LINES; i++) {
-			g.drawString(display_list.get(i), X_BORDER + LINE_SPACE, handler.getHeight() - LINE_SPACE - Y_BORDER - (FONT_SIZE * (i + 1)));
-		}
-	}
+//	public void render(Graphics g) {
+//		if(!isOpen) return;
+//		
+//		int alpha = (int) (255 * TRANSPARENCY / 100);
+//		int LINE_SPACE = FONT_SIZE / 2;
+//		
+//		int width = WIDTH;
+//		int height = (NUM_LINES + 1) * FONT_SIZE;
+//		int x = X_BORDER;
+//		int y = handler.getHeight() - Y_BORDER - height;
+//		
+//		Color c = new Color(0, 0, 0, alpha);
+//		g.setColor(c);
+//		g.fillRect(x, y, width, height);
+//		c = new Color(0, 0, 0, alpha);
+//		g.setColor(c);
+//		g.fillRect(x, handler.getHeight() - Y_BORDER - FONT_SIZE - (LINE_SPACE / 2), width, FONT_SIZE + LINE_SPACE / 2);
+//		
+//		
+//		
+//		
+//		c = new Color(255,255,255);
+//		g.setColor(c);
+//		g.setFont(new Font("Courier New", Font.BOLD, FONT_SIZE));
+//		g.drawString(command_line, X_BORDER + LINE_SPACE, handler.getHeight() - Y_BORDER - LINE_SPACE);
+//		
+//		for (int i = 0;i < display_list.size() && i < NUM_LINES; i++) {
+//			g.drawString(display_list.get(i), X_BORDER + LINE_SPACE, handler.getHeight() - LINE_SPACE - Y_BORDER - (FONT_SIZE * (i + 1)));
+//		}
+//	}
 	
 	private void checkInput() {
 		if(!isOpen) return;
