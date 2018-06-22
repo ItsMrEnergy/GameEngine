@@ -3,7 +3,9 @@ package tilegame;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-import tilegame.display.Display;
+import org.lwjgl.opengl.Display;
+
+import tilegame.display.EngineDisplay;
 import tilegame.gfx.Assets;
 import tilegame.gfx.GameCamera;
 import tilegame.input.Input;
@@ -18,7 +20,7 @@ import tilegame.state.State;
  *
  */
 public class Game implements Runnable{ //Must implement Runnable in order for it to use a thread
-	private Display display;
+	private EngineDisplay display;
 	private int width, height;
 	public String title;
 		
@@ -53,14 +55,15 @@ public class Game implements Runnable{ //Must implement Runnable in order for it
 	 * This method initializes the graphics for the game
 	 */
 	private void init(){
-		display = new Display(title, width, height);//creates new display
+		display = new EngineDisplay(title, width, height);//creates new display
 		//Inputs
-		display.getFrame().addKeyListener(input);
-		display.getFrame().addMouseListener(mouse);
-		display.getFrame().addMouseMotionListener(mouse);
-		display.getCanvas().addMouseListener(mouse);
-		display.getCanvas().addMouseMotionListener(mouse);
+//		display.getFrame().addKeyListener(input);
+//		display.getFrame().addMouseListener(mouse);
+//		display.getFrame().addMouseMotionListener(mouse);
+//		display.getCanvas().addMouseListener(mouse);
+//		display.getCanvas().addMouseMotionListener(mouse);
 		//Pictures
+		
 		Assets.init();
 		
 		handler = new Handler(this);
@@ -116,7 +119,7 @@ public class Game implements Runnable{ //Must implement Runnable in order for it
 		@SuppressWarnings("unused")
 		int ticks = 0;
 		
-		while(running){
+		while(running && !Display.isCloseRequested()){
 			now = System.nanoTime(); //Checks currect time
 			delta += (now - lastTime) / timePerTick;
 			timer+= now - lastTime;
@@ -132,7 +135,10 @@ public class Game implements Runnable{ //Must implement Runnable in order for it
 				ticks = 0;
 				timer = 0;
 			}
+			Display.update();
+			Display.sync(fps);
 		}
+		Display.destroy();
 		stop();
 	}
 	/**
