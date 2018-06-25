@@ -12,6 +12,6 @@ public class Launcher {
 	 */
 	public static void main(String[] args){
 		Game game = new Game("ProjectX", 1280); //Creates window size and title
-		game.start(); //Starts game
+		game.run(); //Starts game
 	}
 }

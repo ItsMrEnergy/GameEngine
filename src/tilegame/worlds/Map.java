@@ -1,10 +1,11 @@
 package tilegame.worlds;
 
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Point;
 
+import org.lwjgl.util.Color;
+
+import tilegame.display.Graphics;
 import tilegame.Handler;
 import tilegame.gfx.Assets;
 import tilegame.gfx.Text;
@@ -86,29 +87,29 @@ public class Map extends World{
 //		entityManager.getPlayer().setY(spawnY);
 	}
 
-//	@Override
-//	public void render(Graphics g){
-//		/*Render optimization*/
-//		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEWIDTH / scale);											// Renders only the
-//		int xEnd = (int) Math.min(width * scale, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH * (scale < 1 ? 1 / scale : scale) + 1);		// tiles that can
-//		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT / scale);										// be seen by the
-//		int yEnd = (int) Math.min(height * scale, (handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILEHEIGHT * (scale < 1 ? 1 / scale : scale) + 1);	// player's camera
-//		/*-------------------*/
-//		for(int y = yStart; y < (int)(yEnd / scale); y++){
-//			for(int x = xStart; x < (int)(xEnd / scale); x++){
-//				getTile(x, y).render(g, (int) (x*(int)(Tile.TILEWIDTH * scale) - handler.getGameCamera().getxOffset()), (int) (y*(int)(Tile.TILEHEIGHT * scale) - handler.getGameCamera().getyOffset()), scale);
-//			}
-//		}
-//
-//		locatorManager.render(g, scale);
-//		itemManager.render(g);
-//		entityManager.render(g, scale);
-//		
-//		int tile_x = (int) getPointerTile().getX();
-//		int tile_y = (int) getPointerTile().getY();
-//		
-//		g.setColor(Color.WHITE);
-//
+	@Override
+	public void render(Graphics g){
+		/*Render optimization*/
+		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEWIDTH / scale);											// Renders only the
+		int xEnd = (int) Math.min(width * scale, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH * (scale < 1 ? 1 / scale : scale) + 1);		// tiles that can
+		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT / scale);										// be seen by the
+		int yEnd = (int) Math.min(height * scale, (handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILEHEIGHT * (scale < 1 ? 1 / scale : scale) + 1);	// player's camera
+		/*-------------------*/
+		for(int y = yStart; y < (int)(yEnd / scale); y++){
+			for(int x = xStart; x < (int)(xEnd / scale); x++){
+				getTile(x, y).render(g, (int) (x*(int)(Tile.TILEWIDTH * scale) - handler.getGameCamera().getxOffset()), (int) (y*(int)(Tile.TILEHEIGHT * scale) - handler.getGameCamera().getyOffset()), scale);
+			}
+		}
+
+		locatorManager.render(g, scale);
+		itemManager.render(g);
+		entityManager.render(g, scale);
+		
+		int tile_x = (int) getPointerTile().getX();
+		int tile_y = (int) getPointerTile().getY();
+		
+		g.setColor(Color.WHITE);
+
 //		if(REN_SCALE) {
 //			g.setFont(new Font(REN_SCALE_FONT, Font.BOLD, REN_SCALE_FONT_SIZE));
 //			g.drawString("scale> " + scale, REN_SCALE_X, REN_SCALE_Y);
@@ -117,7 +118,7 @@ public class Map extends World{
 //			g.setFont(new Font(REN_POINTER_FONT, Font.BOLD, REN_POINTER_FONT_SIZE));
 //			g.drawString("pointer> "+tile_x+" , "+tile_y, REN_POINTER_X, REN_POINTER_Y);
 //		}
-//	}
+	}
 	
 	@Override
 	public void update(){

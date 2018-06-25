@@ -1,8 +1,8 @@
 package tilegame.ui;
 
-import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import tilegame.display.Graphics;
 import tilegame.Handler;
 /**
  * This class is a template for all UIObjects that might be added to a state
@@ -25,7 +25,7 @@ public abstract class UIObject {
 	}
 
 	public abstract void update();
-//	public abstract void render(Graphics g);
+	public abstract void render(Graphics g);
 	
 	//Getters and Setters
 	public float getX() {

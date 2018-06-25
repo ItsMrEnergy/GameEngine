@@ -1,7 +1,7 @@
 package tilegame.gfx;
 
 import java.awt.Font;
-import java.awt.image.BufferedImage;
+import org.newdawn.slick.opengl.Texture;
 /**
  * This class is responsible for loading in the resources for the game.
  * @author Kenneth Lange
@@ -21,21 +21,21 @@ public class Assets {
 	
 	/*Textures*/
 	//Tiles
-	public static BufferedImage grass, dirt, sand, stonepath, shallowwater, deepwater;
+	public static Texture grass, dirt, sand, stonepath, shallowwater, deepwater;
 	//Static Entities
-	public static BufferedImage rock, tree;
-	public static BufferedImage[] cellar_wall, wall;
+	public static Texture rock, tree;
+	public static Texture[] cellar_wall, wall;
 	//Items
-	public static BufferedImage stick;
+	public static Texture stick;
 	//Character Models
-	public static BufferedImage[] player_up, player_down, player_left, player_right, player_notmoving;
-	public static BufferedImage[] guard_up, guard_down, guard_left, guard_right, guard_notmoving;
+	public static Texture[] player_up, player_down, player_left, player_right, player_notmoving;
+	public static Texture[] guard_up, guard_down, guard_left, guard_right, guard_notmoving;
 	//Buttons
-	public static BufferedImage[] start_button, exit_button, map_builder_button, load_button, new_button, back_button;
+	public static Texture[] start_button, exit_button, map_builder_button, load_button, new_button, back_button;
 	//Static Objects
-	public static BufferedImage guardspawner, prisonerspawner, checkpoint;
+	public static Texture guardspawner, prisonerspawner, checkpoint;
 	//Screens
-	public static BufferedImage inventoryScreen;
+	public static Texture inventoryScreen;
 	
 	/**
 	 * Loads in all resources once for the game
@@ -57,13 +57,13 @@ public class Assets {
 		SpriteSheet Wall = new SpriteSheet(ImageLoader.loadImage("/textures/Wall.png"));
 		
 		//Menu Buttons
-		start_button = new BufferedImage[2];
-		exit_button = new BufferedImage[2];
-		map_builder_button = new BufferedImage[2];
-		map_builder_button = new BufferedImage[2];
-		load_button = new BufferedImage[2];
-		new_button = new BufferedImage[2];
-		back_button = new BufferedImage[2];
+		start_button = new Texture[2];
+		exit_button = new Texture[2];
+		map_builder_button = new Texture[2];
+		map_builder_button = new Texture[2];
+		load_button = new Texture[2];
+		new_button = new Texture[2];
+		back_button = new Texture[2];
 		start_button[0] 		= menuButtons.crop(0, 0, buttonWidth, buttonHeight);
 		start_button[1] 		= menuButtons.crop(0, 1, buttonWidth, buttonHeight);
 		exit_button[0] 			= menuButtons.crop(0, 2, buttonWidth, buttonHeight);
@@ -87,11 +87,11 @@ public class Assets {
 		
 		/*Characters*/
 		//Player
-		player_up = new BufferedImage[8];
-		player_right = new BufferedImage[8];
-		player_left = new BufferedImage[8];
-		player_down = new BufferedImage[8];
-		player_notmoving = new BufferedImage[4];
+		player_up = new Texture[8];
+		player_right = new Texture[8];
+		player_left = new Texture[8];
+		player_down = new Texture[8];
+		player_notmoving = new Texture[4];
 		for (int i = 0; i < 8; i++){
 			player_up[i] = playerImages.crop(i + 1, 0, playerWidth, playerHeight);
 		}
@@ -108,11 +108,11 @@ public class Assets {
 			player_notmoving[i] = playerImages.crop(0, i, playerWidth, playerHeight);
 		}
 		//Guard
-		guard_up = new BufferedImage[8];
-		guard_right = new BufferedImage[8];
-		guard_left = new BufferedImage[8];
-		guard_down = new BufferedImage[8];
-		guard_notmoving = new BufferedImage[4];
+		guard_up = new Texture[8];
+		guard_right = new Texture[8];
+		guard_left = new Texture[8];
+		guard_down = new Texture[8];
+		guard_notmoving = new Texture[4];
 		for (int i = 0; i < 8; i++){
 			guard_up[i] = guardImages.crop(i + 1, 0, guardWidth, guardHeight);
 		}
@@ -135,11 +135,11 @@ public class Assets {
 		rock = itemTextures.crop(0, 1, itemWidth, itemHeight);
 		tree = LargeObjects.crop(0, 0, 128, 128);
 		//Multiple types
-		cellar_wall = new BufferedImage[12];
+		cellar_wall = new Texture[12];
 		for (int i = 0; i < 12; i++){
 			cellar_wall[i] = CellarWall.crop(i, 0, tileWidth, tileHeight);
 		}
-		wall = new BufferedImage[5];
+		wall = new Texture[5];
 		for (int i = 0; i < 5; i++){
 			wall[i] = Wall.crop(i, 0, 64, 192);
 		}

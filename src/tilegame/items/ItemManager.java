@@ -1,6 +1,6 @@
 package tilegame.items;
 
-import java.awt.Graphics;
+import tilegame.display.Graphics;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -38,15 +38,15 @@ public class ItemManager {
 	 * This method renders the items in the game.
 	 * @param g
 	 */
-//	public void render(Graphics g) {
-//		for(Item i : items)
-//			i.render(g);
-//	}
+	public void render(Graphics g) {
+		for(Item i : items)
+			i.render(g);
+	}
 	
-//	public void render(Graphics g, double scale) {
-//		for(Item i : items)
-//			i.render(g);
-//	}
+	public void render(Graphics g, double scale) {
+		for(Item i : items)
+			i.render(g);
+	}
 	
 	/**
 	 * Thie method adds an item to the game.

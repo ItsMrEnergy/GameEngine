@@ -1,9 +1,9 @@
 package tilegame;
 
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
+import org.lwjgl.opengl.Display;
 
-import tilegame.display.Display;
+import tilegame.display.Graphics;
+import tilegame.display.EngineDisplay;
 import tilegame.gfx.Assets;
 import tilegame.gfx.GameCamera;
 import tilegame.input.Input;
@@ -18,14 +18,11 @@ import tilegame.state.State;
  *
  */
 public class Game implements Runnable{ //Must implement Runnable in order for it to use a thread
-	private Display display;
+	private EngineDisplay display;
 	private int width, height;
 	public String title;
-		
-	private boolean running = false; //Determines whether the game is running or not
-	private Thread thread; 
 	
-	private BufferStrategy bs;
+	private static final int FPS = 60;
 	private Graphics g;
 	
 	//States
@@ -48,18 +45,20 @@ public class Game implements Runnable{ //Must implement Runnable in order for it
 		this.title = title;
 		input = new Input();
 		mouse = new Mouse();
+		
+		g = new Graphics();
 	}
 	/**
 	 * This method initializes the graphics for the game
 	 */
 	private void init(){
-		display = new Display(title, width, height);//creates new display
+		display = new EngineDisplay(title, width, height);//creates new display
 		//Inputs
-		display.getFrame().addKeyListener(input);
-		display.getFrame().addMouseListener(mouse);
-		display.getFrame().addMouseMotionListener(mouse);
-		display.getCanvas().addMouseListener(mouse);
-		display.getCanvas().addMouseMotionListener(mouse);
+//		display.getFrame().addKeyListener(input);
+//		display.getFrame().addMouseListener(mouse);
+//		display.getFrame().addMouseMotionListener(mouse);
+//		display.getCanvas().addMouseListener(mouse);
+//		display.getCanvas().addMouseMotionListener(mouse);
 		//Pictures
 		Assets.init();
 		
@@ -82,24 +81,10 @@ public class Game implements Runnable{ //Must implement Runnable in order for it
 	/**
 	 * This method takes the updated locations and draws them to the screen.
 	 */
-//	private void render(){//draws updated positions to the screen
-//		bs = display.getCanvas().getBufferStrategy(); //Basically a screen before the actual screen.
-//		if(bs == null){
-//			display.getCanvas().createBufferStrategy(3); //Sets screen to have 3 screens premade before user sees it.
-//			return;
-//		}
-//		g = bs.getDrawGraphics(); //Allows drawing to canvas
-//		//Clear Screen
-//		g.clearRect(0, 0, width, height);
-//		//DRAW HERE!
-//		
-//		if(State.getState() != null)
-//			State.getState().render(g);
-//		
-//		//END DRAWING!
-//		bs.show(); //draws objects
-//		g.dispose(); //completes graphics properly
-//	}
+	private void render(){//draws updated positions to the screen
+		if(State.getState() != null)
+			State.getState().render(g);
+	}
 	/**
 	 * This method runs the game and sets a base for how often it can update and render.
 	 */
@@ -107,54 +92,17 @@ public class Game implements Runnable{ //Must implement Runnable in order for it
 		
 		init();
 		
-		int fps = 60;
-		double timePerTick = 1E9 / fps;
-		double delta = 0;
-		long now;
-		long lastTime = System.nanoTime(); //Current time on computer in nanoseconds.
-		long timer = 0;
-		@SuppressWarnings("unused")
-		int ticks = 0;
+		while (!Display.isCloseRequested()) {
+			update();
+			render();
+			
+			g.drawLine(0, 0, 100, 100);
+
+			Display.update(); //updates
+			Display.sync(FPS); //sets fps in sync mode
+		}
 		
-		while(running){
-			now = System.nanoTime(); //Checks currect time
-			delta += (now - lastTime) / timePerTick;
-			timer+= now - lastTime;
-			lastTime = now; //Updates last time
-			if(delta >= 1){
-				update(); //updates positions of game objects and window etc.
-//				render(); //renders updated positions
-				ticks++;
-				delta--;
-			}
-			if(timer >= 1E9){
-				//Debug.Log("Ticks and Frames: " + ticks); //Displays the Frames per second in the console
-				ticks = 0;
-				timer = 0;
-			}
-		}
-		stop();
-	}
-	/**
-	 * This method starts the thread and sets the boolean running to true
-	 */
-	public synchronized void start(){
-		if(running) return; //If game is already running, don't reinitialize
-		running = true; //Set engine to know game is running
-		thread = new Thread(this);
-		thread.start(); //Calls run() method by default
-	}
-	/**
-	 * This method stops the thread and sets the boolean running to false
-	 */
-	public synchronized void stop(){
-		if(!running) return; //If game is already stopped, don't try to stop
-		running = false;
-		try {
-			thread.join(); //Properly closes thread 
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		Display.destroy();
 	}
 	
 	//Getters and Setters

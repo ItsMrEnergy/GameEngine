@@ -1,7 +1,6 @@
 package tilegame.worlds;
 
-import java.awt.Graphics;
-
+import tilegame.display.Graphics;
 import tilegame.Handler;
 import tilegame.items.ItemManager;
 import tilegame.managers.entities.EntityManager;
@@ -103,25 +102,25 @@ public class World {
 	 * This method is responsible for rendering everything in the world.
 	 * @param g
 	 */
-//	public void render(Graphics g){
-//		/*Render optimization*/
-//		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEWIDTH);									// Renders only the
-//		int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH + 1);		// tiles that can
-//		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT);									// be seen by the
-//		int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILEHEIGHT + 1);	// player's camera
-//		/*-------------------*/
-//		for(int y = yStart; y < yEnd; y++){
-//			for(int x = xStart; x < xEnd; x++){
-//				getTile(x, y).render(g, (int) (x*Tile.TILEWIDTH - handler.getGameCamera().getxOffset()), (int) (y*Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()), 1.0);
-//			}
-//		}
-//		//Locators
-//		locatorManager.render(g);
-//		//Items
-//		itemManager.render(g);
-//		//Entities
-//		entityManager.render(g);
-//	}
+	public void render(Graphics g){
+		/*Render optimization*/
+		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEWIDTH);									// Renders only the
+		int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH + 1);		// tiles that can
+		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT);									// be seen by the
+		int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILEHEIGHT + 1);	// player's camera
+		/*-------------------*/
+		for(int y = yStart; y < yEnd; y++){
+			for(int x = xStart; x < xEnd; x++){
+				getTile(x, y).render(g, (int) (x*Tile.TILEWIDTH - handler.getGameCamera().getxOffset()), (int) (y*Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()), 1.0);
+			}
+		}
+		//Locators
+		locatorManager.render(g);
+		//Items
+		itemManager.render(g);
+		//Entities
+		entityManager.render(g);
+	}
 	/**
 	 * This method loads in the world from a file path.
 	 * @param path

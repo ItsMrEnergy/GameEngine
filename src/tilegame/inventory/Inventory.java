@@ -1,7 +1,7 @@
 package tilegame.inventory;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import tilegame.display.Graphics;
 import java.util.ArrayList;
 
 import tilegame.Handler;
@@ -62,32 +62,32 @@ public class Inventory {
 	 * This method renders the updated inventory.
 	 * @param g
 	 */
-//	public void render(Graphics g) {
-//		if(!active)
-//			return;
-//		//Draws inventory to the middle of the screen
+	public void render(Graphics g) {
+		if(!active)
+			return;
+		//Draws inventory to the middle of the screen
 //		g.drawImage(Assets.inventoryScreen, handler.getWidth()/2 - invWidth / 2, handler.getHeight()/2 - invHeight / 2, 512, 384, null);
-//		
-//		int length = inventoryItems.size();
-//		if (length == 0)
-//			return;
-//		
-//		for(int i = -5; i < 6; i ++) {
-//			if(selectedItem + i < 0 || selectedItem + i >= length)
-//				continue;
-//			if(i==0) {
+		
+		int length = inventoryItems.size();
+		if (length == 0)
+			return;
+		
+		for(int i = -5; i < 6; i ++) {
+			if(selectedItem + i < 0 || selectedItem + i >= length)
+				continue;
+			if(i==0) {
 //			Text.drawString(g, "> " + inventoryItems.get(selectedItem + i).getName() + " <", invListCenterX,
 //					invListCenterY + i * invListSpacing, true, Color.YELLOW, Assets.font28);
-//			}else{
+			}else{
 //			Text.drawString(g, inventoryItems.get(selectedItem + i).getName(), invListCenterX,
 //					invListCenterY + i * invListSpacing, true, Color.WHITE, Assets.font28);
-//			}
-//		}
-//		
-//		Item item = inventoryItems.get(selectedItem);
+			}
+		}
+		
+		Item item = inventoryItems.get(selectedItem);
 //		g.drawImage(item.getTexture(), invImageX, invImageY, invImageWidth, invImageHeight, null);
 //		Text.drawString(g, Integer.toString(item.getCount()), invCountX, invCountY, true, Color.WHITE, Assets.font28);
-//	}
+	}
 	
 	//Inventory Methods
 	/**

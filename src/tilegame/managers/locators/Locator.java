@@ -1,10 +1,11 @@
 package tilegame.managers.locators;
 
-import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
+
+import org.newdawn.slick.opengl.Texture;
 
 import tilegame.Handler;
+import tilegame.display.Graphics;
 /**
  * This class is a template for all locators
  * @author Kenneth Lange
@@ -32,11 +33,11 @@ public abstract class Locator {
 	
 	public abstract void update();
 	
-//	public abstract void render(Graphics g);
+	public abstract void render(Graphics g);
 	
-//	public abstract void render(Graphics g, double scale);
+	public abstract void render(Graphics g, double scale);
 	
-	public abstract BufferedImage getTexture();
+	public abstract Texture getTexture();
 	/**
 	 * Checks the bounds of locators and sees if it collides with another locator
 	 * @param xOffset

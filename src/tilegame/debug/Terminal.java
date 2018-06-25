@@ -1,10 +1,11 @@
 package tilegame.debug;
 
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.util.ArrayList;
 
+import org.lwjgl.util.Color;
+
+import tilegame.display.Graphics;
 import tilegame.Handler;
 import tilegame.input.Input;
 

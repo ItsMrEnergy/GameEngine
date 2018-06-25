@@ -1,6 +1,6 @@
 package tilegame.state;
 
-import java.awt.Graphics;
+import tilegame.display.Graphics;
 import java.io.File;
 import java.util.Arrays;
 
@@ -113,10 +113,10 @@ public class MapBuilderMenuState extends State {
 		return null;
 }
 
-//	@Override
-//	public void render(Graphics g) {
-//		loadButton.render(g);
-//		newButton.render(g);
-//		backButton.render(g);
-//	}
+	@Override
+	public void render(Graphics g) {
+		loadButton.render(g);
+		newButton.render(g);
+		backButton.render(g);
+	}
 }

@@ -1,8 +1,8 @@
 package tilegame.ui;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
+import org.newdawn.slick.opengl.Texture;
 
+import tilegame.display.Graphics;
 import tilegame.Handler;
 import tilegame.input.Mouse;
 /**
@@ -12,7 +12,7 @@ import tilegame.input.Mouse;
  */
 public class UIImageButton extends UIObject{
 	
-	private BufferedImage[] images;
+	private Texture[] images;
 	private Handler handler;
 	private boolean step1, step2, activated;
 	/**
@@ -24,7 +24,7 @@ public class UIImageButton extends UIObject{
 	 * @param height
 	 * @param images
 	 */
-	public UIImageButton(Handler handler, float x, float y, int width, int height, BufferedImage[] images) {
+	public UIImageButton(Handler handler, float x, float y, int width, int height, Texture[] images) {
 		super(handler, x, y, width, height);
 		this.handler = handler;
 		this.images = images;
@@ -56,13 +56,13 @@ public class UIImageButton extends UIObject{
 	/**
 	 * This method renders the updated button.
 	 */
-//	@Override
-//	public void render(Graphics g) {
-//		if(hovering && handler.getMouse().isMouseInside())
-//			g.drawImage(images[1],(int) x, (int) y, width, height, null);
-//		else
-//			g.drawImage(images[0],(int) x, (int) y, width, height, null);
-//	}
+	@Override
+	public void render(Graphics g) {
+		if(hovering && handler.getMouse().isMouseInside())
+			g.drawImage(images[1],(int) x, (int) y, width, height);
+		else
+			g.drawImage(images[0],(int) x, (int) y, width, height);
+	}
 	//Getters
 	public boolean isActivated() {
 		return activated;

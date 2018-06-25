@@ -25,7 +25,7 @@ public class GameCamera {
 	}
 	/**
 	 * This method checks if there are blank spaces like the edges of the map.
-	 * If a blank space is made, the offset don't move to exposed them.
+	 * If a blank space is made, the offset won't move to exposed them.
 	 */
 	public void checkBlankSpace(double scale){
 		if(xOffset < 0){

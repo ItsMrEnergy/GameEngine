@@ -1,6 +1,6 @@
 package tilegame.state;
 
-import java.awt.Graphics;
+import tilegame.display.Graphics;
 
 import tilegame.Handler;
 import tilegame.worlds.World;
@@ -24,9 +24,9 @@ public class GameState extends State{
 		world.update();
 	}
 
-//	@Override
-//	public void render(Graphics g) {
-//		world.render(g);
-//	}
+	@Override
+	public void render(Graphics g) {
+		world.render(g);
+	}
 
 }

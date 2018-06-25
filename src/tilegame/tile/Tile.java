@@ -1,8 +1,9 @@
 package tilegame.tile;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
+import org.lwjgl.util.Color;
+import org.newdawn.slick.opengl.Texture;
+
+import tilegame.display.Graphics;
 
 /**
  * This class is responsible for taking in all the different types of tiles and creating a template for any additional tiles that may be created.
@@ -36,10 +37,10 @@ public class Tile {
 	//CLASS STUFF
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	
-	protected BufferedImage texture;
+	protected Texture texture;
 	protected final int id;
 	
-	public Tile(BufferedImage texture, int id){
+	public Tile(Texture texture, int id){
 		this.texture = texture;
 		this.id = id;
 		
@@ -57,16 +58,14 @@ public class Tile {
 	 * @param x
 	 * @param y
 	 */
-//	public void render(Graphics g, int x, int y){
-//		if (texture != null)
-//			g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
-//		if(DEBUGMODE) {
-//			Color oldcolor = g.getColor();
-//			g.setColor(new Color(0,0,0,127));
-//			g.drawRect(x, y, TILEWIDTH, TILEHEIGHT);
-//			g.setColor(oldcolor);
-//		}
-//	}
+	public void render(Graphics g, int x, int y){
+		if (texture != null)
+			g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT);
+		if(DEBUGMODE) {
+			g.setColor(new Color(0,0,0,127));
+			g.drawRect(x, y, TILEWIDTH, TILEHEIGHT);
+		}
+	}
 	
 	/**
 	 * This method is responsible for rendering updated tiles to the scale provided
@@ -74,15 +73,13 @@ public class Tile {
 	 * @param x
 	 * @param y
 	 */
-//	public void render(Graphics g, int x, int y, double scale){
-//		g.drawImage(texture, x, y, (int)(TILEWIDTH * scale), (int)(TILEHEIGHT * scale), null);
-//		if(DEBUGMODE) {
-//			Color oldcolor = g.getColor();
-//			g.setColor(new Color(0,0,0,127));
-//			g.drawRect(x, y, (int)(TILEWIDTH * scale), (int)(TILEHEIGHT * scale));
-//			g.setColor(oldcolor);
-//		}
-//	}
+	public void render(Graphics g, int x, int y, double scale){
+		g.drawImage(texture, x, y, (int)(TILEWIDTH * scale), (int)(TILEHEIGHT * scale));
+		if(DEBUGMODE) {
+			g.setColor(new Color(0,0,0,127));
+			g.drawRect(x, y, (int)(TILEWIDTH * scale), (int)(TILEHEIGHT * scale));
+		}
+	}
 	/**
 	 * This method decides whether the tile is solid.
 	 * It is by default set to false.

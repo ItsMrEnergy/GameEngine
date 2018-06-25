@@ -1,8 +1,7 @@
 package tilegame.state;
 
-import java.awt.Graphics;
-
-import tilegame.*;
+import tilegame.display.Graphics;
+import tilegame.Handler;
 import tilegame.debug.Terminal;
 import tilegame.input.Input;
 import tilegame.managers.entities.creatures.*;
@@ -94,11 +93,11 @@ public class MapBuilderState extends State{
 		return -1;
 	}
 
-//	@Override
-//	public void render(Graphics g) {
-//		map.render(g);
-//		
+	@Override
+	public void render(Graphics g) {
+		map.render(g);
+		
 //		t.render(g);
-//	}
+	}
 
 }

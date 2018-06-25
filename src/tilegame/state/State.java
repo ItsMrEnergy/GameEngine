@@ -1,6 +1,6 @@
 package tilegame.state;
 
-import java.awt.Graphics;
+import tilegame.display.Graphics;
 
 import tilegame.Handler;
 /**
@@ -30,6 +30,6 @@ public abstract class State {
 	
 	public abstract void update();
 	
-//	public abstract void render(Graphics g);
+	public abstract void render(Graphics g);
 	
 }

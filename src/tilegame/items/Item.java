@@ -1,8 +1,9 @@
 package tilegame.items;
 
-import java.awt.Graphics;
+import tilegame.display.Graphics;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
+
+import org.newdawn.slick.opengl.Texture;
 
 import tilegame.Handler;
 import tilegame.gfx.Assets;
@@ -24,7 +25,7 @@ public class Item {
 	public static final int ITEMWIDTH =32, ITEMHEIGHT = 32;
 	
 	protected Handler handler;
-	protected BufferedImage texture;
+	protected Texture texture;
 	protected String name;
 	protected final int id;
 	
@@ -38,7 +39,7 @@ public class Item {
 	 * @param name
 	 * @param id
 	 */
-	public Item(BufferedImage texture, String name, int id) {
+	public Item(Texture texture, String name, int id) {
 		this.texture = texture;
 		this.name = name;
 		this.id = id;
@@ -68,11 +69,11 @@ public class Item {
 	 * Item is being rendered in the world the ground.
 	 * @param g
 	 */
-//	public void render(Graphics g) {
-//		if(handler == null)
-//			return;
-//		render(g, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()));
-//	}
+	public void render(Graphics g) {
+		if(handler == null)
+			return;
+		render(g, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()));
+	}
 	
 	/**
 	 * Item is being rendered in the player's inventory screen.
@@ -81,7 +82,7 @@ public class Item {
 	 * @param y
 	 */
 	public void render(Graphics g, int x, int y) {
-		g.drawImage(texture, x, y, ITEMWIDTH, ITEMHEIGHT, null);
+		g.drawImage(texture, x, y, ITEMWIDTH, ITEMHEIGHT);
 	}
 
 	/**
@@ -116,11 +117,11 @@ public class Item {
 		this.handler = handler;
 	}
 
-	public BufferedImage getTexture() {
+	public Texture getTexture() {
 		return texture;
 	}
 
-	public void setTexture(BufferedImage texture) {
+	public void setTexture(Texture texture) {
 		this.texture = texture;
 	}
 

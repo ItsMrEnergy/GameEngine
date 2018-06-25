@@ -1,7 +1,8 @@
 package tilegame.managers.entities.creatures;
 
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
+
+import org.newdawn.slick.opengl.Texture;
 
 import tilegame.gfx.Animation;
 import tilegame.gfx.Assets;
@@ -16,10 +17,10 @@ public enum CreatureType {
 	int type, speed;
 	boolean player_controlled;
 	Animation animUp, animDown, animLeft, animRight;
-	BufferedImage[] notMoving;
+	Texture[] notMoving;
 	protected Rectangle bounds;
 	
-	CreatureType(int type, boolean player_controlled, Animation animUp, Animation animDown, Animation animLeft, Animation animRight, BufferedImage[] notMoving){
+	CreatureType(int type, boolean player_controlled, Animation animUp, Animation animDown, Animation animLeft, Animation animRight, Texture[] notMoving){
 		this.type = type;
 		this.player_controlled = player_controlled;
 		
