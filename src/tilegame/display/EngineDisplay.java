@@ -8,8 +8,6 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class EngineDisplay {
 	
-	private static final int FPS = 60;
-	
 	public EngineDisplay(String title, int width, int height) {
 		Display.setTitle(title);
 		
@@ -25,5 +23,4 @@ public class EngineDisplay {
 		glOrtho(0, width, height, 0, 1, -1); //1 and -1 make this a 2 dimensional view
 		glMatrixMode(GL_MODELVIEW);
 	}
-	
 }

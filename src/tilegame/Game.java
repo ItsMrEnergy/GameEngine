@@ -53,13 +53,14 @@ public class Game implements Runnable{ //Must implement Runnable in order for it
 	 */
 	private void init(){
 		display = new EngineDisplay(title, width, height);//creates new display
-		//Inputs
+		//Inputs //TODO Add inputs back in
 //		display.getFrame().addKeyListener(input);
 //		display.getFrame().addMouseListener(mouse);
 //		display.getFrame().addMouseMotionListener(mouse);
 //		display.getCanvas().addMouseListener(mouse);
 //		display.getCanvas().addMouseMotionListener(mouse);
 		//Pictures
+		
 		Assets.init();
 		
 		handler = new Handler(this);
@@ -101,7 +102,6 @@ public class Game implements Runnable{ //Must implement Runnable in order for it
 			Display.update(); //updates
 			Display.sync(FPS); //sets fps in sync mode
 		}
-		
 		Display.destroy();
 	}
 	
