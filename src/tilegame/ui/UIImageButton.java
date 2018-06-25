@@ -68,8 +68,8 @@ public class UIImageButton extends UIObject{
 		return activated;
 	}
 	
-	/*
-	 * If the button breaks, this will completley stop false positives.
+	/**
+	 * If the button breaks, this will completely stop false positives.
 	 */
 	public void hardReset() {
 		hovering = false;
