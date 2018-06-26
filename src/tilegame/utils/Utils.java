@@ -1,12 +1,14 @@
 package tilegame.utils;
 
 import java.awt.GraphicsEnvironment;
+import java.awt.image.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.*;
 
 import javax.swing.JFileChooser;
 /**
@@ -63,6 +65,35 @@ public class Utils {
 		}catch(IOException e){
 			e.printStackTrace();
 		}
+	}
+	
+	public ByteBuffer bufferedImageToByteBuffer(BufferedImage bi) {
+		ByteBuffer byteBuffer;
+		DataBuffer dataBuffer = bi.getRaster().getDataBuffer();
+
+		if (dataBuffer instanceof DataBufferByte) {
+		    byte[] pixelData = ((DataBufferByte) dataBuffer).getData();
+		    byteBuffer = ByteBuffer.wrap(pixelData);
+		}
+		else if (dataBuffer instanceof DataBufferUShort) {
+		    short[] pixelData = ((DataBufferUShort) dataBuffer).getData();
+		    byteBuffer = ByteBuffer.allocate(pixelData.length * 2);
+		    byteBuffer.asShortBuffer().put(ShortBuffer.wrap(pixelData));
+		}
+		else if (dataBuffer instanceof DataBufferShort) {
+		    short[] pixelData = ((DataBufferShort) dataBuffer).getData();
+		    byteBuffer = ByteBuffer.allocate(pixelData.length * 2);
+		    byteBuffer.asShortBuffer().put(ShortBuffer.wrap(pixelData));
+		}
+		else if (dataBuffer instanceof DataBufferInt) {
+		    int[] pixelData = ((DataBufferInt) dataBuffer).getData();
+		    byteBuffer = ByteBuffer.allocate(pixelData.length * 4);
+		    byteBuffer.asIntBuffer().put(IntBuffer.wrap(pixelData));
+		}
+		else {
+		    throw new IllegalArgumentException("Not implemented for data buffer type: " + dataBuffer.getClass());
+		}
+		return null;
 	}
 	
 	public static File pickFile() {
