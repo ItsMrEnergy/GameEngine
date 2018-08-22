@@ -26,7 +26,7 @@ public class SpriteSheet {
 	 * @param height
 	 * @return
 	 */
-	public Texture crop(int x, int y, int width, int height){
-		return (Texture) sheet.getSubimage(x*width, y*height, width, height);
+	public BufferedImage crop(int x, int y, int width, int height){
+		return sheet.getSubimage(x*width, y*height, width, height);
 	}
 }

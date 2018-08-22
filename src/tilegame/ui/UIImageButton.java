@@ -68,6 +68,8 @@ public class UIImageButton extends UIObject{
 		return activated;
 	}
 	
+	
+	//TODO This might not be needed
 	/**
 	 * If the button breaks, this will completely stop false positives.
 	 */
